@@ -6,7 +6,7 @@ Create a simple calendar application that allows a user to save events for each 
 
 ## Installation
 
-Click here: https://ebonygrrl.github.io/04-code-quiz/
+Click here: https://ebonygrrl.github.io/05-work-day-scheduler/
 
 ## Usage
 
@@ -22,6 +22,12 @@ To use this application:
 ## Credits
 
 https://momentjs.com/
+https://fontawesome.com/
+https://jquery.com/
+https://jqueryui.com/
+https://fonts.google.com/
+https://getbootstrap.com/
+
 
 ## License
 
