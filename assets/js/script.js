@@ -3,31 +3,49 @@
 
 
 // Convert time
-function convertTime() {
-    var d = new Date();
+function convertTime(start,end) {
+    var post = "";
 
     var seconds = 1000, // 1 second
          minute = seconds * 60, // 60 seconds
            hour = minute * 60, // 60 minutes
             day = hour * 24; // 1 day
 
-    d.setHours(9,00,00);            
-    console.log(d);        
+    // Set time blocks to only show 8 hours 9am - 5pm
 
-    //Convert 24 hours to 12 hours
-    var hours = Math.floor((d % 12)); // 0 = AM, 1 = PM
-    var workDay =  hour * 8;
+    var currTime = new Date().getTime(); // convert time to ms
+    console.log("date: " + currTime);
+    
+    var startHour = new Date().setHours(9,0,0,0); // convert time to 9am
+    console.log("hours: " + startHour);
+
+    var endHour = new Date().setHours(17,0,0,0); // convert time to 9am
+    console.log("hours: " + endHour);
+
+    var gap = Math.floor(endHour - startHour); // subtract 9am from current time
+    console.log("gap: " + gap);
 
 
-    //console.log(textDay);
-    console.log((now % day) / day);
-    //console.log(day + ", " + hour  + ", " + minute + ", " + seconds);
+    var calcHour = Math.floor(gap % day / hour);
+    console.log("textday: " + calcHour);
 
-    var test = (Math.floor((d % day) / hour));
-    console.log(test);
-    //console.log(8*hour);
+    for (var i=0; i < calcHour; i++) {
+        post += "hour: " + [i+1];
+    }
 
-    // Start time @ 9am and add an hour by array
+    console.log(post);
+/*
+    if (hours >= 12) {
+        //console.log("It's AM!");
+        merīdiem = "<span>AM</span>";
+    } else {
+        //console.log("It's PM!");
+        merīdiem = "<span>PM</span>";
+    }
+    
+    hours = hours % 12;*/
+    //console.log(hours);
+    
 }
 
 // Get date
@@ -40,6 +58,7 @@ function currentDate() {
 function init() {
     currentDate();
     convertTime();
+    setInterval(currentDate, 1000);
 }
 
 function saveEntry() {
@@ -47,13 +66,16 @@ function saveEntry() {
 }
 
 function timeBlocks() {
+    //<div class="row time-blocks">
     var hrs = [];
 
     var blockCont = $('.time-blocks');
 
     var hrBlock = $('<td>');
 
-    
+    var taskBlock = $('<td>');
+
+    var saveBlock = $('<td>');
 
 } 
 
