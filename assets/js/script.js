@@ -1,69 +1,57 @@
 // Create global variables
-var currTime  = moment().format('x'),
-    startHour = moment().hour(1),
-    endHour   = moment().hour(9),
+var blockCont = $('.container'),
+    currTime  = moment().format('x'),
+    startHour = moment().hour(20),
+    endHour   = moment().hour(24),
     gap       = moment.duration(endHour - startHour).hours()
     plusOne   = startHour.add(1,'h');
+
 
 // Output time block rows
 function timeBlocks(duration) {
     for (var i=0; i < duration; i++) {  
-        addRows();   
+        addRows(gap);   
     }
-
-    return;
 }
-// Get date
+// Get and display date
 function currentDate() {
     var currDate = $('#currentDay');
-
     currDate.text(moment().format('MMMM DD, YYYY'));
-
-    return;
 }
 
 function init() {
-    currentDate();
-    
+    currentDate();    
     // Pass duration to another function
     timeBlocks(gap);
-
     //setInterval(currentDate, 1000);
-
-    return;
 }
 
-function addRows() {
+function addRows(index) {
     // Create variables for elements
-    var blockCont = $('.container'),
-        hrBlock   = $('<div>'),
-        taskBlock = $('<div>'),
-        saveBlock = $('<div>'),
-        blockRow  = $('<div>'),
-        newRow    = $('<div>').addClass('row');
+    var thisRow   = $('<div>').addClass('row'),
+        timeBlock = $('<div>').addClass('col-1').text(startHour.format('h A')),
+        textBlock = $('<div>').addClass('col'),
+        saveBlock = $('<div>').addClass('col-1');
 
-    /*console.log(currTime);
-    console.log(startHour);
-    console.log(endHour);
-    console.log(gap);*/
+    for (var i=0; i < index; i++) {
 
     // Create form elements
-    var form = $('<form>'),
-        task = '<textarea name="myTask" form="schedule-form">Enter text here...</textarea>';
+    var formId = 'schedule-form-' + i,
+        form   = '<form id=' + formId + 'method="POST">',
+        task   = '<textarea name="myTask" form="schedule-form-' + i + '">Enter text here...</textarea>',
+        save   = '<button type="submit" value=""><i class="fa-solid fa-floppy-disk fa-2xl"></i></button>';
+        saveBlock.html(save);  
+        //form.append(task,saveBlock);
 
-    // Format elements   
-    hrBlock.addClass('col-1 hrBlock'); 
-    taskBlock.addClass('col taskContainer');
-    form.attr('id','schedule-form').attr('method','POST');        
-    saveBlock.addClass('col-1 saveBtn').html('<button type="submit" value=""><i class="fa-solid fa-floppy-disk fa-2xl"></i></button>');
-    
-    form.append(task,saveBlock);
-    newRow.append(form);
-    taskBlock.append(newRow);  
-    blockRow.addClass('row time-blocks').append(hrBlock,taskBlock);
-    blockCont.append(blockRow);  
+    //while (i < index) {
 
-    return;
+        // Add elements  
+        textBlock.append(form).append(task);
+        thisRow.append(timeBlock,textBlock,saveBlock);  
+        blockCont.append(thisRow);
+        startHour.add(1,'h');
+    }  
+    console.log();
 } 
 
 init();
