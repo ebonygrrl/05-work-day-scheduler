@@ -12,28 +12,30 @@ function currentDate() {
 }
 
 function currHour() {
-    var currHour = moment().hour();
+    var currHour = moment().format('h A');
 
     $('.hour').each(function() {
         var numHour = $(this).text();
         var rev = moment().set('hour', numHour).format('h A');
         
-        if (moment().isBefore(rev)) {
-            $('.description').addClass('past');
+        if (numHour < currHour) {
+            $(this).siblings().children('.description').addClass('past').removeClass('present future');
             console.log("past");
-        } else if (moment().isAfter(rev)) {
-            $('.description').addClass('future');
-            console.log("future");
-        } else {
-            $('.description').addClass('present');
+        } else if (numHour === currHour) {
+            $(this).siblings().children('.description').addClass('present').removeClass('past future');
             console.log("present");
+        } else {
+            $(this).siblings().children('.description').addClass('future').removeClass('past present');
+            console.log("future");
         }
+
+        console.log(currHour === numHour? 'yes' : 'no');
     });
 }
 
 function saveTask(e) {
     e.preventDefault();
-    
+
     if (e.target !== e.currentTarget) { 
         alert("hi");
     }
@@ -46,5 +48,5 @@ save.addEventListener("click", saveTask);
 currentDate();
 
 // Check time every half hour
-//setInterval(function() {currHour(), 10000});
+//setInterval(function() {currHour(), 3600000});
 currHour();
