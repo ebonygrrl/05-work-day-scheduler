@@ -1,35 +1,22 @@
-/* variables */
-:root {
---lavender: #D9D3E9;
---dkpurple: #2A136D;
---ltpurple: #BB5BE6;
---dkgray: #878588;
-}
-
-/* keyframes */
-@-webkit-keyframes fadeinout {
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-  
-@keyframes fadeinout {
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
 }
 
-textarea{
+textarea {
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  width: 100%;
+}
+
+textarea:focus {
+  border: none;
+  outline: none;
 }
 
 .jumbotron {
@@ -40,11 +27,13 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-.description{
+.description {
+  margin-top: -30px;
+  min-height: 100%;
   white-space: pre-wrap;
 }
 
-.time-block{
+.time-block {
   text-align: center;
   border-radius: 15px;
 }
@@ -52,7 +41,7 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
 }
 
 .hour {
@@ -80,13 +69,17 @@ textarea{
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #06aed5;
   color: white;
+  cursor: pointer;
+  margin-top: -30px;
+  min-height: 100%;
+  width: 100%;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 /* media queries */
