@@ -1,12 +1,10 @@
-// Create global variables
-var currDate = $('#currentDay'),
-    save     = document.querySelector('.saveBtn');
-
 // Get today's date
 function currentDate() {
+    var currDate = $('#currentDay');
     currDate.html(moment().format('MMMM DD, YYYY'));
 }
 
+// Get hour slot
 function currHour() {
     var currHour = moment().hour(); // Using hour function makes variable an integer
 
@@ -22,44 +20,53 @@ function currHour() {
         }
 
         //console.log(currHour === numHour? 'yes' : 'no');
-        //console.log(typeof(currHour) + ", " + typeof(numHour));
+        //console.log(currHour + ", " + numHour);
     });
 }
 
-
 // Listen for clicks on save button
-save.addEventListener("click", function saveTask(e) {
-    e.preventDefault(); 
+$('.saveBtn').on("click", function () {
     var time = $(this).parent().parent().attr('id'), 
         tasks = $(this).parent().siblings().children('.description').val();
-  
+
     //console.log(time + ", " + tasks);
-    
-        if (tasks === "" || tasks === "Enter text here...") {
-            alert("Please make an entry before saving.");
-            // Clear textarea on click
-            $('.description').focus(function() {
-                $(this).val('');
-             });
-        } else {
-            // Store entry
-            localStorage.setItem(time,tasks);    
-        }
+
+    if (tasks === "") {
+        alert("Please make an entry before saving.");
+        // Clear textarea on click
+        $('.description').focus(function() {
+            $(this).val('');
+        });
+    } else {
+        // Store entry
+        localStorage.setItem(time,tasks);    
     }
-);
+});
 
 function init() {
-    // Retrieve saved data
-    var numHour = parseInt($(this).parent().attr('id').slice(5));
-
     // Get today's date
     currentDate();
 
     // Check time every half hour
-    //setInterval(function() {currHour(), 3600000});
+    setInterval(function() {
+        currHour(), 3600000
+    });
+
+    // Get hour slot
     currHour();
 
-    
+    var storage = window.localStorage;
+
+    // Retrieve saved data
+    if (storage.length > 0) {
+        $('.hour').each(function() {
+            var numHourId = $(this).parent().attr('id');
+            var getVal = localStorage.getItem(numHourId);
+            var output = "#" + numHourId + " .description";
+
+            $(output).val(getVal);
+        });
+    }
 }
 
 init();
