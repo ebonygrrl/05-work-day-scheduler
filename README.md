@@ -14,15 +14,25 @@ To use this application:
 1. Enter your task in the respective textarea based on the hour you wish to do the task.
 2. Click the save button (floppy disk icon) on that row to store your task.
    
-![Code Quiz run through animation](/assets/images/05-third-party-apis-homework-demo.gif)
+Link to demo animation here: https://drive.google.com/file/d/1tz5q5Rg0TaG3wmPmHBiakvA-ChZKNx-q/view
+
+## Demos
+
+My animated demo
+
+![My animated demo](/assets/images/work-day-scheduler-tori-booker.gif)
+
+Demo provided by bootcamp
+
+![Bootcamp provided demo](/assets/images/05-third-party-apis-homework-demo.gif)
 
 ## Credits
 
-https://momentjs.com/
-https://fontawesome.com/
-https://jquery.com/
-https://jqueryui.com/
-https://fonts.google.com/
+https://momentjs.com/<br>
+https://fontawesome.com/<br>
+https://jquery.com/<br>
+https://jqueryui.com/<br>
+https://fonts.google.com/<br>
 https://getbootstrap.com/
 
 

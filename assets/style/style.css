@@ -1,7 +1,26 @@
+/* keyframes */
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+}
+
+footer {
+  border-top: 2px solid #000000;
+}
+
+main {
+  margin-bottom: 30px;
 }
 
 textarea {
@@ -57,12 +76,12 @@ textarea:focus {
 
 .present {
   background-color: #ff6961;
-  color: white;
+  color: #000000;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color: #000000;
 }
 
 .saveBtn {
@@ -77,14 +96,17 @@ textarea:focus {
   width: 100%;
 }
 
+.saveBtn:hover {
+  color: #000000;
+}
+
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
 
-/* media queries */
-@media screen and (max-width: 375px) {
-}
-
-@media screen and (min-width: 376px) and (max-width: 1119px) {
+.response {
+  animation: fadeinout 1s linear forwards;
+  opacity: 1;
+  -webkit-animation: fadeinout 1s linear forwards;
 }
