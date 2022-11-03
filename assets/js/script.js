@@ -26,30 +26,40 @@ function currHour() {
     });
 }
 
-function saveTask(e) {
-    var time = $(this).parent().attr('id'), 
-        tasks = $(this).siblings('.description').val();
-
-    e.preventDefault();    
-    if (e.target !== e.currentTarget) { 
-        alert("hi");
-
-        
-        localStorage.setItem("saveData", JSON.stringify(saveData));    
-    }
-}
 
 // Listen for clicks on save button
-save.addEventListener("click", saveTask);
+save.addEventListener("click", function saveTask(e) {
+    e.preventDefault(); 
+    var time = $(this).parent().parent().attr('id'), 
+        tasks = $(this).parent().siblings().children('.description').val();
+  
+    //console.log(time + ", " + tasks);
+    
+        if (tasks === "" || tasks === "Enter text here...") {
+            alert("Please make an entry before saving.");
+            // Clear textarea on click
+            $('.description').focus(function() {
+                $(this).val('');
+             });
+        } else {
+            // Store entry
+            localStorage.setItem(time,tasks);    
+        }
+    }
+);
 
-// Clear textarea on click
-$('.description').focus(function() {
-    $(this).val('');
- });
+function init() {
+    // Retrieve saved data
+    var numHour = parseInt($(this).parent().attr('id').slice(5));
 
-// Get today's date
-currentDate();
+    // Get today's date
+    currentDate();
 
-// Check time every half hour
-//setInterval(function() {currHour(), 3600000});
-currHour();
+    // Check time every half hour
+    //setInterval(function() {currHour(), 3600000});
+    currHour();
+
+    
+}
+
+init();
