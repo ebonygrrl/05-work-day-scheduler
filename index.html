@@ -23,6 +23,9 @@
   </header>
   <main>
     <div class="container">
+      <p id="success" class="response" style="display: none; text-align: center;">Appointment added to <span style="color: #ff0000; font-family: 'Courier New', Courier, monospace;">localStorage</span> <span style="color: #006900"><i class="fa-solid fa-check"></i></span></p>
+    </div>
+    <div class="container">
       <div id="hour-9" class="row no-gutters time-block">
         <div class="col-1 hour"><span class="hour-block">9</span> <span>AM</span></div>
         <div class="col">
@@ -103,10 +106,14 @@
         <div class="col-1">
           <button class="saveBtn"><i class="fa-solid fa-floppy-disk fa-2xl"></i></button>
         </div>
-      </div>
-      
+      </div>      
     </div>
   </main>
+  <footer>
+    <div class="container">
+      <div style="padding: 20px 0; text-align: center;">Copyright &copy; 2022. Work Day Scheduler coded by Tori Booker.</div>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>

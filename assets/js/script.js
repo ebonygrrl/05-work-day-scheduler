@@ -1,7 +1,7 @@
 // Get today's date
 function currentDate() {
     var currDate = $('#currentDay');
-    currDate.html(moment().format('MMMM DD, YYYY'));
+    currDate.html(moment().format('MMMM D, YYYY'));
 }
 
 // Get hour slot
@@ -39,19 +39,15 @@ $('.saveBtn').on("click", function () {
         });
     } else {
         // Store entry
-        localStorage.setItem(time,tasks);    
+        localStorage.setItem(time,tasks);
+        $('#success').css('display','block');    
     }
 });
 
 function init() {
     // Get today's date
     currentDate();
-
-    // Check time every half hour
-    setInterval(function() {
-        currHour(), 3600000
-    });
-
+    
     // Get hour slot
     currHour();
 
